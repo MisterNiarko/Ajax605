@@ -7,6 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import data.ListeDesMatchs;
 import data.MatchsEnCours;
@@ -14,7 +16,7 @@ import data.MatchsEnCours;
 /**
  * Servlet implementation class GameList
  */
-@WebServlet("/GameList")
+//@WebServlet("/GameList")
 public class GameList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private ListeDesMatchs donnees = null;
@@ -32,7 +34,9 @@ public class GameList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		donnees = ListeDesMatchs.getInstance();
 		MatchsEnCours listeMatch = donnees.getAllMatchName();
-		response.setAttribute
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(new Gson().toJson(listeMatch));
 	}
 
 	/**

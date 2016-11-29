@@ -12,7 +12,7 @@ import data.ListeDesMatchs;
 /**
  * Servlet implementation class Serveur
  */
-@WebServlet("/Serveur")
+//@WebServlet("/Serveur")
 public class Serveur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

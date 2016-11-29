@@ -10,7 +10,15 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-
+  <servlet>
+    <servlet-name>Serveur</servlet-name>
+    <servlet-class>servlet.Serveur</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Serveur</servlet-name>
+    <url-pattern>/Serveur</url-pattern>
+  </servlet-mapping>
   
   <servlet>
     <servlet-name>Consultation</servlet-name>
@@ -21,5 +29,12 @@
     <url-pattern>/Consultation</url-pattern>
   </servlet-mapping>
   
-
+  <servlet>
+    <servlet-name>GameList</servlet-name>
+    <servlet-class>servlet.GameList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GameList</servlet-name>
+    <url-pattern>/GameList</url-pattern>
+  </servlet-mapping>
 </web-app>

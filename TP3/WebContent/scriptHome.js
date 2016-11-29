@@ -1,7 +1,7 @@
 function loadMatchList(){
 	$.get('GameList', function(listeMatch){
 		$.each(listeMatch, function(index,value){
-			console.log(value.domicile.nom);
+			console.log(value);
 		});
 	});
 }
