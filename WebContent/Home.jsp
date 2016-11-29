@@ -9,7 +9,7 @@
 	</head>
 
 	<body onload="loadMatchList()">
+		<button id="btRefresh" type="button" onclick="loadMatchList()">Refresh</button> 
 		<table id="tableResult" border=1></table>
-		<button id="btAddResult" type="button" onclick="ajouterLigne()">AddResult</button> 
 	</body>
 </html> 
