@@ -2,32 +2,31 @@ var ds_ListeDesMatchs;
 var flag_Split = false;
 
 function loadMatchList(){
-	clearTable("tableMatch");
+	clearTable();
 	$.get('GameList', function(listeMatch){
 		ds_ListeDesMatchs = listeMatch;
 		$.each(listeMatch, function(index,value){
 			$.each(value, function(index2,value2){
-				ajouterLigne(value2.id, value2.equipeA, value2.equipeB, value2.temps);
+				ajouterLigne(value2.equipeA, value2.equipeB, value2.temps, value2.id);
 			});
 		});
 	});
 }
 
-function loadMatchDetail(id){
-	clearTable("tableMatchDetail");
-	$.get('GameDetail', {id: id}, function(matchDetail){
-				console.log(matchDetail.temps);
+function loadMatchDetail(identifiant){
+	$.get('GameDetail', {id: identifiant}, function(match){
+		console.log(match);
 	});
 }
 
-function clearTable(table){
-	var table = document.getElementById(table);
+function clearTable(){
+	var table = document.getElementById("tableMatch");
 	while(table.rows.length >0){
 		table.deleteRow(0);
 	}
 }
 
-function ajouterLigne(id, equipeA, equipeB, temps){
+function ajouterLigne(equipeA, equipeB, temps, id){
 	var tableau = document.getElementById("tableMatch");
     var ligne = tableau.insertRow(-1);
 	ligne.onclick = (function(){
@@ -35,7 +34,6 @@ function ajouterLigne(id, equipeA, equipeB, temps){
 			$('.container').toggleClass('expanded');
 			flag_Split = true;
 		}
-		loadMatchDetail(id);
 	});
 	ligne.onmouseover = (function(){
 		if(flag_Split == false){
@@ -60,7 +58,6 @@ function ajouterLigne(id, equipeA, equipeB, temps){
     var colonne3 = ligne.insertCell(2);
     colonne3.innerHTML = temps;
     var colonne4 = ligne.insertCell(3);
-    colonne4.innerHTML = equipeB;
+    colonne3.innerHTML = equipeB;
 }
-
 
