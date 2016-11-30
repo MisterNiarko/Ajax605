@@ -37,4 +37,14 @@
     <servlet-name>GameList</servlet-name>
     <url-pattern>/GameList</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>GameDetail</servlet-name>
+    <servlet-class>servlet.GameDetail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GameDetail</servlet-name>
+    <url-pattern>/GameDetail</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
