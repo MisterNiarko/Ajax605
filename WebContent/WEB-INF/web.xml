@@ -34,6 +34,7 @@
     <servlet-name>GameList</servlet-name>
     <url-pattern>/GameList</url-pattern>
   </servlet-mapping>
+<<<<<<< HEAD
   <servlet>
     <servlet-name>GameDetail</servlet-name>
     <servlet-class>servlet.GameDetail</servlet-class>
@@ -42,4 +43,6 @@
     <servlet-name>GameDetail</servlet-name>
     <url-pattern>/GameDetail</url-pattern>
   </servlet-mapping>
+=======
+>>>>>>> origin/master
 </web-app>
