@@ -36,7 +36,7 @@ public class Match  implements Serializable  {
         this.id = id;
         this.local = local;
         this.visiteur = visiteur;
-	this.periode = 1;
+        this.periode = 1;
     }
     
     private void gestionPeriode(){
@@ -44,11 +44,11 @@ public class Match  implements Serializable  {
             case 1:
 		if (temps >= TEMPS_PERIODE && pause == false) {
                     pause = true;
-                    evtMatch.add( new Evenement(temps, "First time break"));
+                    evtMatch.add( new Evenement(temps, "Première pause !"));
 		}
                 else if ((temps >= TEMPS_PERIODE + TEMPS_PAUSE) && pause == true) {
                     pause = false;
-                    evtMatch.add( new Evenement(temps, "Here we go for the second periode"));
+                    evtMatch.add( new Evenement(temps, "C'est parti pour la seconde periode !"));
                     debutPeriode = temps;
                     periode = 2;
 		}
@@ -56,11 +56,11 @@ public class Match  implements Serializable  {
             case 2:
 		if ((temps >= debutPeriode + TEMPS_PERIODE ) && pause == false ) {
                     pause = true;
-                    evtMatch.add( new Evenement(temps, "Second time break"));
+                    evtMatch.add( new Evenement(temps, "Seconde pause !"));
 		}
 		else if ((temps >= debutPeriode + TEMPS_PERIODE + TEMPS_PAUSE ) && pause == true) {
                     pause = false;
-                    evtMatch.add( new Evenement(temps, "here we go for the last periode"));
+                    evtMatch.add( new Evenement(temps, "C'est parti pour la dernière periode !"));
                     debutPeriode = temps;
                     periode = 3;
 		}
@@ -69,7 +69,7 @@ public class Match  implements Serializable  {
 		if ((temps >= TEMPS_MAX ) && pause == false ) {
                     pause = true;
                     gestionGagnant();
-                    evtMatch.add( new Evenement(temps, "This is the end of the game"));
+                    evtMatch.add( new Evenement(temps, "Fin du match !"));
 		}	
             break;
             default:
