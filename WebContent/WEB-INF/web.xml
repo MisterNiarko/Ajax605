@@ -47,4 +47,13 @@
     <url-pattern>/GameDetail</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>GameEvent</servlet-name>
+    <servlet-class>servlet.GameEvent</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GameEvent</servlet-name>
+    <url-pattern>/GameEvent</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

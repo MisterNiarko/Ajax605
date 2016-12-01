@@ -1,5 +1,6 @@
 var ds_ListeDesMatchs;
 var flag_Split = false;
+var j = 0;
 
 function loadMatchList(){
 	clearTable("tableMatch");
@@ -15,8 +16,9 @@ function loadMatchList(){
 
 function loadMatchDetail(id){
 	clearTable("tableMatchDetail");
+	var tableau = document.getElementById("tableMatchDetail");
+	
 	$.get('GameDetail', {id: id}, function(matchDetail){
-		var tableau = document.getElementById("tableMatchDetail");
 		
 	    var ligne = tableau.insertRow(-1);
 	    var colonne1 = ligne.insertCell(0);
@@ -41,9 +43,21 @@ function loadMatchDetail(id){
 	    colonne1.innerHTML = "Score visiteur";
 	    colonne2 = ligne.insertCell(1);
 	    colonne2.innerHTML = matchDetail.scoreVisiteur;
+	    
+	    $.get('GameEvent', {id: id}, function(matchEvent){
+			$.each(matchEvent, function(index,value){
+				var ligne = tableau.insertRow(-1);
+			    var colonne1 = ligne.insertCell(0);
+			    colonne1.innerHTML = value.message;
+			    var colonne2 = ligne.insertCell(1);
+			    colonne2.innerHTML = value.temps;
+			});
+		});
+	    
 	});
+	
 }
-
+	
 function clearTable(table){
 	var table = document.getElementById(table);
 	while(table.rows.length >0){
