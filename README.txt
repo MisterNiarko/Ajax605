@@ -1,10 +1,10 @@
 Fonctionnalités :
-[] Liste des matchs disponibles + choisir un match
+[x] Liste des matchs disponibles + choisir un match
 [] Mise à jour aux deux minutes
 [] Mise à jour sur demande
 
 Infos affichées :
-[] Description statique du match : nom des équipes
+[x] Description statique du match : nom des équipes
 [] Description dynamique du match : chronomètre et pointage
 [] Description dynamique du match : compteurs et pénalités
 
@@ -24,11 +24,11 @@ Fonctionnalités :
 Implémentation
 Ajax et dynamicité de la page ou des pages
 [] Sérialisation et envoi des requêtes
-[] Utilisation du DOM pour modifier la page(ne pas recharger la page en entier, mais en partie)
-[] Utilisation de HttpXMLRequest ou l'équivalent selon le framework utilisé pour les mises-à-jour 
+[x] Utilisation du DOM pour modifier la page(ne pas recharger la page en entier, mais en partie)
+[x] Utilisation de HttpXMLRequest ou l'équivalent selon le framework utilisé pour les mises-à-jour 
 [] Indication dans la page que la mise à jour est en cours(utilisation des états de la requêtes Asynchrone ?)
-[] Réception, désérialisation et utilisation des réponses
+[x] Réception, désérialisation et utilisation des réponses
 
 SERVEUR
-[] Traitement des requêtes http et des réponses : GET et/ou POST
+[x] Traitement des requêtes http et des réponses : GET et/ou POST
 [] Utilisation de thread pour traiter la requête selon le modèle utilisé (thread-per-request)

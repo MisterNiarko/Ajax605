@@ -8,7 +8,10 @@ function onStart(){
 }
 
 function startEventNotifier(){
-	var eventSource = new EventSource("/EventGoal");
+	var eventSource = new EventSource('Event');
+	eventSource.onmessage = function(event){
+		console.log(event.data);
+	}
 }
 
 function loadMatchList(){

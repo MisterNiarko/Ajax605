@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * @author Wiwi
  */
 public class ListeDesMatchs {
-    public final static int MAX_MATCH = 10;
+    public final static int MAX_MATCH = 3;
     private static final int INTERVAL_TEMPS = 30;   //10 sec
     private Match ListeMatch[] = new Match[MAX_MATCH];
     public Semaphore sem = null;

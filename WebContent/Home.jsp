@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="home.css" />
 	</head>
 
-	<body onload="loadMatchList()">
+	<body onload="onStart()">
 	<div class="container">
     	<div class="left">
 			<button id="btRefresh" type="button" onclick="loadMatchList()">Refresh</button>
