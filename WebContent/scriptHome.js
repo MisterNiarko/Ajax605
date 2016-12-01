@@ -1,6 +1,15 @@
 var ds_ListeDesMatchs;
 var flag_Split = false;
 
+function onStart(){
+	loadMatchList();
+	startEventNotifier();
+}
+
+function startEventNotifier(){
+	var eventSource = new EventSource("/EventGoal");
+}
+
 function loadMatchList(){
 	clearTable("tableMatch");
 	$.get('GameList', function(listeMatch){
