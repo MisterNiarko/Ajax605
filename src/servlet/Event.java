@@ -2,17 +2,12 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.google.gson.Gson;
 
 import data.Evenement;
 import data.ListeDesMatchs;
@@ -40,6 +35,8 @@ public class Event extends HttpServlet {
 		Match[] listeMatch = ListeDesMatchs.getInstance().getAllMatch();
 		HashMap<Integer, Integer> listNbEvent = new HashMap<Integer, Integer>();
 		response.setContentType("text/event-stream");
+		response.setHeader("Cache-Control", "no-cache");
+		response.setHeader("Connection", "keep-alive");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter writer = response.getWriter();
 		System.out.println("Taille listeMatch : "+listeMatch.length);
@@ -58,6 +55,7 @@ public class Event extends HttpServlet {
 					System.out.println(evt.toString());
 					listNbEvent.put(match.getId(), match.getEvtMatch().size());
 					writer.write("data: "+ evt.toString() +"\n\n");
+					writer.flush();
 				}
 			}
 			try {

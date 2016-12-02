@@ -8,10 +8,17 @@ function onStart(){
 }
 
 function startEventNotifier(){
-	var eventSource = new EventSource('Event');
-	eventSource.onmessage = function(event){
-		console.log(event.data);
-	}
+	var eventSource = new EventSource("http://localhost:8080/TP3/Event");
+	console.log("startEventNotifier lancé...");
+	eventSource.onopen = function(){
+		console.log("SSE connecté !\n");
+	};
+	eventSource.onmessage = function(evt){
+		console.log(evt.data);
+	};
+	eventSource.onError = function(){
+		console.log("SSE Error");
+	};
 }
 
 function loadMatchList(){
