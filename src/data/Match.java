@@ -9,11 +9,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import notif.*;
+
 /**
  *
  * @author Wiwi
  */
-public class Match  implements Serializable  {
+public class Match  implements Serializable, Observable  {
     private static final long serialVersionUID = -2841880765635920039L;
     private int id = 0;
     private int temps = 0;
@@ -24,6 +26,7 @@ public class Match  implements Serializable  {
     private Equipe gagnant = null;
     
     private List<Evenement> evtMatch = new ArrayList<Evenement>();
+    private ArrayList<Observateur> tabObservateur;// Tableau d'observateurs.
     private int periode;
     
     private int debutPeriode = 0;
@@ -37,6 +40,28 @@ public class Match  implements Serializable  {
         this.local = local;
         this.visiteur = visiteur;
         this.periode = 1;
+        tabObservateur=new ArrayList<Observateur>();
+    }
+    
+    public void ajouterObservateur(Observateur o)
+    {
+            tabObservateur.add(o); 
+    }
+    
+    // Permet de supprimer (résilier) un observateur écoutant le GPS
+    public void supprimerObservateur(Observateur o)
+    {
+            tabObservateur.remove(o);              
+    }
+
+    // Méthode permettant de notifier tous les observateurs lors d'un changement d'état du GPS.
+    public void notifierObservateurs()
+    {
+            for(int i=0;i<tabObservateur.size();i++)
+            {
+                    Observateur o = tabObservateur.get(i);
+                    o.actualiser(this);// On utilise la méthode "tiré".
+            }
     }
     
     private void gestionPeriode(){
