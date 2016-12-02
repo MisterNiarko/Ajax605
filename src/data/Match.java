@@ -121,6 +121,7 @@ public class Match  implements Serializable, Observable  {
     public synchronized void ajouterEvt(Evenement evt){
         evt.setTemps(this.temps);
         this.evtMatch.add(evt);
+        notifierObservateurs();
     }
     
     public Boolean getPause(){

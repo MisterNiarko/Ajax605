@@ -53,6 +53,7 @@
   <servlet>
     <servlet-name>Event</servlet-name>
     <servlet-class>servlet.Event</servlet-class>
+    <async-supported>true</async-supported>
   </servlet>
   <servlet-mapping>
     <servlet-name>Event</servlet-name>

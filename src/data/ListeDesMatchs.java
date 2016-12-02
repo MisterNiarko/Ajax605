@@ -20,6 +20,7 @@ public class ListeDesMatchs {
     private static final int INTERVAL_TEMPS = 30;   //10 sec
     private Match ListeMatch[] = new Match[MAX_MATCH];
     public Semaphore sem = null;
+    
 
     // updateplay time every INTERVAL_TIME sec
     private ScheduledExecutorService scheduler =  null;
