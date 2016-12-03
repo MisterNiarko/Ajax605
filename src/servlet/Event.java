@@ -36,7 +36,7 @@ public class Event extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
-		/*Match[] listeMatch = ListeDesMatchs.getInstance().getAllMatch();
+		Match[] listeMatch = ListeDesMatchs.getInstance().getAllMatch();
 		HashMap<Integer, Integer> listNbEvent = new HashMap<Integer, Integer>();
 		response.setContentType("text/event-stream");
 		response.setHeader("Cache-Control", "no-cache");
@@ -68,8 +68,8 @@ public class Event extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}*/
-		response.setContentType("text/event-stream");
+		}
+		/*response.setContentType("text/event-stream");
 		response.setHeader("Cache-Control", "no-cache");
 		response.setHeader("Connection", "keep-alive");
 		response.setCharacterEncoding("UTF-8");
@@ -93,7 +93,7 @@ public class Event extends HttpServlet {
 					}
 				}
 			});
-        }
+        }*/
 	}
 
 	/**

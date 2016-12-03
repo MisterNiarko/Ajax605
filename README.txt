@@ -1,34 +1,34 @@
-Fonctionnalités :
+Fonctionnalitï¿½s :
 [x] Liste des matchs disponibles + choisir un match
-[] Mise à jour aux deux minutes
-[] Mise à jour sur demande
+[x] Mise ï¿½ jour aux deux minutes
+[x] Mise ï¿½ jour sur demande
 
-Infos affichées :
-[x] Description statique du match : nom des équipes
-[] Description dynamique du match : chronomètre et pointage
-[] Description dynamique du match : compteurs et pénalités
+Infos affichï¿½es :
+[x] Description statique du match : nom des ï¿½quipes
+[] Description dynamique du match : chronomï¿½tre et pointage
+[] Description dynamique du match : compteurs et pï¿½nalitï¿½s
 
-Evènements :
-[] Evènements pour les buts
-[] Evènements pour les pénalités
-[] Notifications des évènements sont faites dans une fenêtre "pop-up"
+Evï¿½nements :
+[x] Evï¿½nements pour les buts
+[x] Evï¿½nements pour les pï¿½nalitï¿½s
+[x] Notifications des ï¿½vï¿½nements sont faites dans une fenï¿½tre "pop-up"
 
 Paris
 
-Fonctionnalités :
+Fonctionnalitï¿½s :
 [] Choisir un match pour faire un pari
 [] Faire un pari sur un match
-[] Informer les parieurs de leur gain immédiatement s'ils sont connectés à la fin du match
-[] Informer les parieurs de leur gain lorsqu'ils se reconnectent, s'ils n'ont pas déjà reçu cette notification (utiliser les cookies par exemple pour le savoir ou garder l'état sur le serveur)
+[] Informer les parieurs de leur gain immï¿½diatement s'ils sont connectï¿½s ï¿½ la fin du match
+[] Informer les parieurs de leur gain lorsqu'ils se reconnectent, s'ils n'ont pas dï¿½jï¿½ reï¿½u cette notification (utiliser les cookies par exemple pour le savoir ou garder l'ï¿½tat sur le serveur)
 
-Implémentation
-Ajax et dynamicité de la page ou des pages
-[] Sérialisation et envoi des requêtes
+Implï¿½mentation
+Ajax et dynamicitï¿½ de la page ou des pages
+[] Sï¿½rialisation et envoi des requï¿½tes
 [x] Utilisation du DOM pour modifier la page(ne pas recharger la page en entier, mais en partie)
-[x] Utilisation de HttpXMLRequest ou l'équivalent selon le framework utilisé pour les mises-à-jour 
-[] Indication dans la page que la mise à jour est en cours(utilisation des états de la requêtes Asynchrone ?)
-[x] Réception, désérialisation et utilisation des réponses
+[x] Utilisation de HttpXMLRequest ou l'ï¿½quivalent selon le framework utilisï¿½ pour les mises-ï¿½-jour 
+[] Indication dans la page que la mise ï¿½ jour est en cours(utilisation des ï¿½tats de la requï¿½tes Asynchrone ?)
+[x] Rï¿½ception, dï¿½sï¿½rialisation et utilisation des rï¿½ponses
 
 SERVEUR
-[x] Traitement des requêtes http et des réponses : GET et/ou POST
-[] Utilisation de thread pour traiter la requête selon le modèle utilisé (thread-per-request)
+[x] Traitement des requï¿½tes http et des rï¿½ponses : GET et/ou POST
+[] Utilisation de thread pour traiter la requï¿½te selon le modï¿½le utilisï¿½ (thread-per-request)

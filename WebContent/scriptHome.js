@@ -5,7 +5,8 @@ var j = 0;
 function onStart(){
 	loadMatchList();
 	startEventNotifier();
-}
+	setInterval("loadMatchList()",2000);
+	}
 
 function startEventNotifier(){
 	var eventSource = new EventSource("http://localhost:8080/TP3/Event");
@@ -14,7 +15,7 @@ function startEventNotifier(){
 		console.log("SSE connecté !\n");
 	};
 	eventSource.onmessage = function(evt){
-		console.log(evt.data);
+		alert(evt.data);
 	};
 	eventSource.onError = function(){
 		console.log("SSE Error");
