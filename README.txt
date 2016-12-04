@@ -5,8 +5,8 @@ Fonctionnalit�s :
 
 Infos affich�es :
 [x] Description statique du match : nom des �quipes
-[] Description dynamique du match : chronom�tre et pointage
-[] Description dynamique du match : compteurs et p�nalit�s
+[x] Description dynamique du match : chronom�tre et pointage
+[x] Description dynamique du match : compteurs et p�nalit�s
 
 Ev�nements :
 [x] Ev�nements pour les buts
@@ -23,12 +23,12 @@ Fonctionnalit�s :
 
 Impl�mentation
 Ajax et dynamicit� de la page ou des pages
-[] S�rialisation et envoi des requ�tes
+[x] S�rialisation et envoi des requ�tes
 [x] Utilisation du DOM pour modifier la page(ne pas recharger la page en entier, mais en partie)
 [x] Utilisation de HttpXMLRequest ou l'�quivalent selon le framework utilis� pour les mises-�-jour 
-[] Indication dans la page que la mise � jour est en cours(utilisation des �tats de la requ�tes Asynchrone ?)
+[] Indication dans la page que la mise � jour est en cours(utilisation des �tats de la requ�tes Ajax)
 [x] R�ception, d�s�rialisation et utilisation des r�ponses
 
 SERVEUR
 [x] Traitement des requ�tes http et des r�ponses : GET et/ou POST
-[] Utilisation de thread pour traiter la requ�te selon le mod�le utilis� (thread-per-request)
+[x] Utilisation de thread pour traiter la requ�te selon le mod�le utilis� (thread-per-request)

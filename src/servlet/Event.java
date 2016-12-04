@@ -16,8 +16,6 @@ import com.google.gson.Gson;
 import data.Evenement;
 import data.ListeDesMatchs;
 import data.Match;
-import notif.Observable;
-import notif.Observateur;
 
 /**
  * Servlet implementation class EventGoal
@@ -75,31 +73,6 @@ public class Event extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		/*response.setContentType("text/event-stream");
-		response.setHeader("Cache-Control", "no-cache");
-		response.setHeader("Connection", "keep-alive");
-		response.setCharacterEncoding("UTF-8");
-        final AsyncContext context = request.startAsync();
-        for(Match m:ListeDesMatchs.getInstance().getAllMatch()){
-        	m.ajouterObservateur(new Observateur() {
-				@Override
-				public void actualiser(Observable o) {
-					Match match = (Match) o;
-					System.out.println("ID : " +match.getId());
-					System.out.println("nb Event : "+match.getEvtMatch().size());
-					Evenement evt = match.getEvtMatch().get(match.getEvtMatch().size()-1);
-					System.out.println(evt.toString());
-					PrintWriter writer;
-					try {
-						writer = response.getWriter();
-						writer.write("data: "+ evt.toString() +"\n\n");
-						writer.flush();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-			});
-        }*/
 	}
 
 	/**

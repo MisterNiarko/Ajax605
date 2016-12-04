@@ -5,6 +5,7 @@
 body, html {
   margin: 0;
   height: 100%;
+  font-family: 'Lato', Calibri, Arial, sans-serif;
 }
 
 .container {
@@ -13,7 +14,7 @@ body, html {
 
 .left, .right {
   float: left;
-  background-color: #899ED3;;
+  background-color: ##FEFEFE;;
   overflow: hidden;
   transition: all .5s;
   height: 100%;
@@ -31,16 +32,15 @@ body, html {
 }
 
 .expanded .left {
-  width: 50%;
-  background-color: #C3CBDD;
-  color: #fff;
+  width: 33%;
 }
 .expanded .right{
-	width: 50%;
+	width: 67%;
+	background-color: #EBEBEB;
 }
 
 .tableMatch{
-	vertical-align: middle;
+	border-collapse: collapse;
 	text-align: center;
 	width: 100%;
 }

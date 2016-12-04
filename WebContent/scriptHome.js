@@ -1,11 +1,12 @@
 var ds_ListeDesMatchs;
+var idMatchDetail = 0;
 var flag_Split = false;
 var j = 0;
 
 function onStart(){
 	loadMatchList();
 	startEventNotifier();
-	setInterval("loadMatchList()",2000);
+	setInterval("loadMatch()",2000);
 	}
 
 function startEventNotifier(){
@@ -38,6 +39,11 @@ function startEventNotifier(){
 	};
 }
 
+function loadMatch(){
+	loadMatchList();
+	loadMatchDetail(idMatchDetail);
+}
+
 function loadMatchList(){
 	clearTable("tableMatch");
 	$.get('GameList', function(listeMatch){
@@ -56,29 +62,35 @@ function loadMatchDetail(id){
 	
 	$.get('GameDetail', {id: id}, function(matchDetail){
 		
-	    var ligne = tableau.insertRow(-1);
-	    var colonne1 = ligne.insertCell(0);
-	    colonne1.innerHTML = "Temps de match";
-	    var colonne2 = ligne.insertCell(1);
-	    colonne2.innerHTML = matchDetail.temps;
+		var ligne = tableau.insertRow(-1);
+		
+		var colonne1 = ligne.insertCell(0);
+		colonne1.style.textAlign = "right";
+		colonne1.innerHTML = matchDetail.local.nom;
+		var colonne2 = ligne.insertCell(1);
+		colonne2.style.textAlign="center";
+		colonne2.innerHTML = matchDetail.scoreLocal + "-" + matchDetail.scoreVisiteur;
+		var colonne3 = ligne.insertCell(2);
+		colonne3.innerHTML = matchDetail.visiteur.nom;
+			    
+		ligne = tableau.insertRow(-1);
+	    colonne1 = ligne.insertCell(0);
+	    colonne1.innerHTML = "";
+	    colonne2 = ligne.insertCell(1);
+	    colonne2.style.textAlign="center";
+	    colonne2.innerHTML = secondsToHms(matchDetail.temps);
 	    
 	    ligne = tableau.insertRow(-1);
 	    colonne1 = ligne.insertCell(0);
-	    colonne1.innerHTML = "Periode";
+	    colonne1.innerHTML = "";
 	    colonne2 = ligne.insertCell(1);
-	    colonne2.innerHTML = matchDetail.periode;
+	    colonne2.innerHTML = "Periode " + matchDetail.periode;
 	    
 	    ligne = tableau.insertRow(-1);
 	    colonne1 = ligne.insertCell(0);
-	    colonne1.innerHTML = "Score local";
+	    colonne1.innerHTML = "";
 	    colonne2 = ligne.insertCell(1);
-	    colonne2.innerHTML = matchDetail.scoreLocal;
-	    
-	    ligne = tableau.insertRow(-1);
-	    colonne1 = ligne.insertCell(0);
-	    colonne1.innerHTML = "Score visiteur";
-	    colonne2 = ligne.insertCell(1);
-	    colonne2.innerHTML = matchDetail.scoreVisiteur;	    
+	    colonne2.innerHTML = "<button onclick="parier()">Parier</button>";
 	});
 	
 }
@@ -99,30 +111,33 @@ function ajouterLigne(id, equipeA, equipeB, temps){
 			flag_Split = true;
 		}
 		loadMatchDetail(id);
+		idMatchDetail=id;
 	});
 	ligne.onmouseover = (function(){
-		if(flag_Split == false){
-			ligne.style.backgroundColor = "#9999ff";
-		}
-		else{
-			ligne.style.backgroundColor = "#9999ff";
-		}
+		ligne.style.backgroundColor = "#CFD3F8";
 	});
 	ligne.onmouseout = (function(){
-		if(flag_Split == false){
-			ligne.style.backgroundColor = "#899ED3";
-		}
-		else{
-			ligne.style.backgroundColor = "#C3CBDD";
-		}
+		ligne.style.backgroundColor = "#FEFEFE";
 	});
 	var colonne1 = ligne.insertCell(0);
     colonne1.innerHTML = id;
     var colonne2 = ligne.insertCell(1);
     colonne2.innerHTML = equipeA;
     var colonne3 = ligne.insertCell(2);
-    colonne3.innerHTML = temps;
+    colonne3.innerHTML = secondsToHms(temps);
     var colonne4 = ligne.insertCell(3);
     colonne4.innerHTML = equipeB;
 }
+
+
+
+function secondsToHms(d) {
+	d = Number(d);
+	var h = Math.floor(d / 3600);
+	var m = Math.floor(d % 3600 / 60);
+	var s = Math.floor(d % 3600 % 60);
+	return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s); 
+}
+
+
 

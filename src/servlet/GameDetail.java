@@ -28,9 +28,9 @@ public class GameDetail extends HttpServlet {
 		Match[] listeMatch = donnees.getAllMatch();
 		Match matchDetail = listeMatch[1];
 		int id = Integer.parseInt(request.getParameter("id"));
-		System.out.println("Message du servlet GqmeDetail -------------- id = "+id);
+		System.out.println("Message du servlet GameDetail -------------- id = "+id);
 		for(Match match:listeMatch){
-			System.out.println("Message du servlet GqmeDetail -------------- getId = "+match.getId());
+			System.out.println("Message du servlet GameDetail -------------- getId = "+match.getId());
 			if(match.getId() == id) {
 					matchDetail = match;
 					break;
