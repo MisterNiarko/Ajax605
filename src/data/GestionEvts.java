@@ -47,7 +47,7 @@ public class GestionEvts implements Runnable {
                             teamEvent = listeMatch[eventOnMatch].getVisiteur();
                             listeMatch[eventOnMatch].butVisiteur();
                         }
-                        listeMatch[eventOnMatch].ajouterEvt(new Evenement(Evenement.BUT,"Goal " + teamEvent.toString()));
+                        listeMatch[eventOnMatch].ajouterEvt(new Evenement(Evenement.BUT,"But de " + teamEvent.toString()));
                         System.out.println("Evenement - But " + teamEvent.toString());
                         //Probabilité d'une pénalité
                         if(r.nextInt(30) < 5){

@@ -15,7 +15,23 @@ function startEventNotifier(){
 		console.log("SSE connecté !\n");
 	};
 	eventSource.onmessage = function(evt){
-		alert(evt.data);
+		//alert(evt.data);
+		console.log(evt.data);
+		var obj = JSON.parse(evt.data);
+		console.log(obj.message.message);
+		var match;
+		$.each(ds_ListeDesMatchs, function(index,value){
+			$.each(value, function(index2,value2){
+				if(value2.id == obj.id){ match = value2;}
+			});
+		});
+		console.log(match);
+		if(obj.type == 0){
+			alert("GOAL !!\nMatch : " + match.equipeA + " vs " + match.equipeB + "\n"+obj.message.message);
+		}
+		else if(obj.type == 1){
+			alert("Penalité !\nMatch : " + match.equipeA+ " vs "+match.equipeB+"\n"+obj.message.message);
+		}
 	};
 	eventSource.onError = function(){
 		console.log("SSE Error");
@@ -62,18 +78,7 @@ function loadMatchDetail(id){
 	    colonne1 = ligne.insertCell(0);
 	    colonne1.innerHTML = "Score visiteur";
 	    colonne2 = ligne.insertCell(1);
-	    colonne2.innerHTML = matchDetail.scoreVisiteur;
-	    
-	    $.get('GameEvent', {id: id}, function(matchEvent){
-			$.each(matchEvent, function(index,value){
-				var ligne = tableau.insertRow(-1);
-			    var colonne1 = ligne.insertCell(0);
-			    colonne1.innerHTML = value.message;
-			    var colonne2 = ligne.insertCell(1);
-			    colonne2.innerHTML = value.temps;
-			});
-		});
-	    
+	    colonne2.innerHTML = matchDetail.scoreVisiteur;	    
 	});
 	
 }

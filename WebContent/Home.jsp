@@ -5,12 +5,14 @@
 	<head>
 		<title>HockeyLive</title>
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script src="scriptHome.js"></script>
 		<!-- <link rel="stylesheet" href="styles.css" /> -->
 		<link rel="stylesheet" type="text/css" href="home.css" />
 	</head>
 
 	<body onload="onStart()">
+	<div id="dialog"></div>
 	<div class="container">
     	<div class="left">
 			<button id="btRefresh" type="button" onclick="loadMatchList()">Refresh</button>

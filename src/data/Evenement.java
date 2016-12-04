@@ -44,7 +44,7 @@ public class Evenement implements Serializable {
     }
     @Override
     public String toString() {
-        return "Evenement : temps = " + temps + ", message = " + message;
+        return "{\"temps\":" + temps + ",\"message\":\"" + message + "\"}";
     }
     public int getType() {
         return type;
