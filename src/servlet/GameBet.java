@@ -21,6 +21,8 @@ public class GameBet extends HttpServlet {
 		super();
 	}
 	
+	
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int matchID = Integer.parseInt(request.getParameter("matchID"));
         String nomEquipe = request.getParameter("nomEquipe");

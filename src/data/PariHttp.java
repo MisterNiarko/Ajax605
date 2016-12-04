@@ -12,7 +12,6 @@ public class PariHttp {
     private int pariID = 0; 
     private int matchID = 0;
     private String nomEquipe = null;
-    private byte[] adresseIPClient = new byte[4];
     private float montantPari = 0;
     
     public PariHttp(int matchID, String nomEquipe, float montantPari) {
@@ -32,10 +31,6 @@ public class PariHttp {
     public void setMatchID(int matchID) {
         this.matchID = matchID;
     }
-
-    public void setAdresseIPClient(byte[] adresseIPClient) {
-        this.adresseIPClient = adresseIPClient;
-    }
     
     public void setMontantPari(float montantPari) {
         this.montantPari = montantPari;
@@ -53,11 +48,12 @@ public class PariHttp {
         return nomEquipe;
     }
 
-    public byte[] getAdresseIPClient() {
-        return adresseIPClient;
-    }
-    
      public float getMontantPari() {
         return montantPari;
     }
+     
+     @Override
+     public String toString() {
+         return "{\"Pari n°\":" + pariID + ",\"Equipe\":\"" + nomEquipe + ",\"Montant\":\"" + montantPari + "\" }";
+     }
 }

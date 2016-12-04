@@ -13,7 +13,7 @@ public class ListePariHttp {
 	 * 
 	 */
 	public final static int MAX_PARI = 100;
-	private PariHttp ListePariHttp[] = null;	//new PariHttp[MAX_PARI];
+	private PariHttp ListePari[] = new PariHttp[MAX_PARI];
 	private int nbrPari = 0;
 	
 	/** Technique du Holder */
@@ -35,13 +35,14 @@ public class ListePariHttp {
 	
 	public int parier(PariHttp pariCourant){
 		pariCourant.setPariID(nbrPari);
-		ListePariHttp[nbrPari] = pariCourant;
+		ListePari[nbrPari] = pariCourant;
+		System.out.println(pariCourant.toString());
 		nbrPari += 1;
 		return nbrPari - 1;
 	}
 	
 	public PariHttp getPari(int numPari){
-		return ListePariHttp[numPari];
+		return ListePari[numPari];
 	}
 
 }

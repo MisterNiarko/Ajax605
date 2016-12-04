@@ -99,6 +99,7 @@ function ajouterLigne(id, equipeA, equipeB, temps){
 			flag_Split = true;
 		}
 		loadMatchDetail(id);
+		parier();
 	});
 	ligne.onmouseover = (function(){
 		if(flag_Split == false){
@@ -124,5 +125,9 @@ function ajouterLigne(id, equipeA, equipeB, temps){
     colonne3.innerHTML = temps;
     var colonne4 = ligne.insertCell(3);
     colonne4.innerHTML = equipeB;
+}
+
+function parier(){
+	$.post("GameBet", {matchID: "2", nomEquipe: "A", montantPari: "100"});
 }
 

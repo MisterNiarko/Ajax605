@@ -58,5 +58,13 @@
     <servlet-name>Event</servlet-name>
     <url-pattern>/Event</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>GameBet</servlet-name>
+    <servlet-class>servlet.GameBet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GameBet</servlet-name>
+    <url-pattern>/GameBet</url-pattern>
+  </servlet-mapping>
   
 </web-app>
