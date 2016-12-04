@@ -20,6 +20,14 @@
 		</div>
 		<div class="right">
 			<table id="tableMatchDetail"></table>
+			<div>
+				<p>Parier 
+				<input type="number" id="valueBet" name="quantity" min="0.1" max="1000">
+				$ sur
+				<select id="choiceBet" size=1></select></p>
+				
+			</div>
+			<button id="btParier" type="button" onclick="parier()">Parier</button>
 		</div>
 	</div>
 	</body>

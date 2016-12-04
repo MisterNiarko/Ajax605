@@ -85,14 +85,31 @@ function loadMatchDetail(id){
 	    colonne1.innerHTML = "";
 	    colonne2 = ligne.insertCell(1);
 	    colonne2.innerHTML = "Periode " + matchDetail.periode;
-	    
-	    ligne = tableau.insertRow(-1);
-	    colonne1 = ligne.insertCell(0);
-	    colonne1.innerHTML = "";
-	    colonne2 = ligne.insertCell(1);
-	    colonne2.innerHTML = "<button onclick="parier()">Parier</button>";
 	});
 	
+}
+
+function loadOptions(id){
+	var sel = document.getElementById("choiceBet");
+	removeOptions(sel);
+	
+	$.get('GameDetail', {id: id}, function(matchDetail){
+		
+		var option = document.createElement("option");
+		option.text = matchDetail.local.nom;
+		sel.add(option);
+		var option2 = document.createElement("option");
+		option2.text = matchDetail.visiteur.nom;
+		sel.add(option2);
+	});
+}
+
+function removeOptions(obj) {
+	if (obj == null) return;
+	if (obj.options == null) return;
+	while (obj.options.length > 0) {
+		obj.remove(0);
+	}
 }
 	
 function clearTable(table){
@@ -111,11 +128,8 @@ function ajouterLigne(id, equipeA, equipeB, temps){
 			flag_Split = true;
 		}
 		loadMatchDetail(id);
-<<<<<<< HEAD
 		idMatchDetail=id;
-=======
-		parier();
->>>>>>> origin/master
+		loadOptions(id)
 	});
 	ligne.onmouseover = (function(){
 		ligne.style.backgroundColor = "#CFD3F8";
@@ -133,9 +147,6 @@ function ajouterLigne(id, equipeA, equipeB, temps){
     colonne4.innerHTML = equipeB;
 }
 
-<<<<<<< HEAD
-
-
 function secondsToHms(d) {
 	d = Number(d);
 	var h = Math.floor(d / 3600);
@@ -144,11 +155,12 @@ function secondsToHms(d) {
 	return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s); 
 }
 
-
-
-=======
 function parier(){
-	$.post("GameBet", {matchID: "2", nomEquipe: "A", montantPari: "100"});
+	console.log(document.getElementById("valueBet").value);
+	$.post("GameBet", {matchID: idMatchDetail, nomEquipe: document.getElementById("choiceBet").value, montantPari: document.getElementById("valueBet").value}, function(confirmation){
+		if(confirmation == -1){
+			alert("Il est trop tard pour parier sur ce match.");
+		}
+		else{}
+	});
 }
-
->>>>>>> origin/master
