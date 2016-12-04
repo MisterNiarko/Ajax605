@@ -6,6 +6,7 @@
 package hockeyserveur;
 
 import data.ListeDesMatchs;
+import data.ListePariHttp;
 import serveurs.ServeurTCP;
 import serveurs.ServeurUDP;
 
@@ -22,6 +23,8 @@ public class HockeyServeur {
 
     ListeDesMatchs listeMatch = ListeDesMatchs.getInstance();
     listeMatch.startThreadUpdate();
+    
+    ListePariHttp listePari = ListePariHttp.getInstance();
 
     Thread serveurMatch = new Thread(new ServeurUDP(6780, 4));
     serveurMatch.start();

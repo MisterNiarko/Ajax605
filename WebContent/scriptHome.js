@@ -111,7 +111,11 @@ function ajouterLigne(id, equipeA, equipeB, temps){
 			flag_Split = true;
 		}
 		loadMatchDetail(id);
+<<<<<<< HEAD
 		idMatchDetail=id;
+=======
+		parier();
+>>>>>>> origin/master
 	});
 	ligne.onmouseover = (function(){
 		ligne.style.backgroundColor = "#CFD3F8";
@@ -129,6 +133,7 @@ function ajouterLigne(id, equipeA, equipeB, temps){
     colonne4.innerHTML = equipeB;
 }
 
+<<<<<<< HEAD
 
 
 function secondsToHms(d) {
@@ -141,3 +146,9 @@ function secondsToHms(d) {
 
 
 
+=======
+function parier(){
+	$.post("GameBet", {matchID: "2", nomEquipe: "A", montantPari: "100"});
+}
+
+>>>>>>> origin/master
