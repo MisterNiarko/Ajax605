@@ -70,6 +70,7 @@ public class Match  implements Serializable  {
                     pause = true;
                     gestionGagnant();
                     evtMatch.add( new Evenement(temps, "Fin du match !"));
+                    ListePariHttp.getInstance().majParis(this);
 		}	
             break;
             default:
@@ -120,7 +121,7 @@ public class Match  implements Serializable  {
 	if(temps <= TEMPS_MAX) {
             this.temps = temps;
             gestionPeriode();
-	}	
+	}
     }
     public Equipe getDomicile() {
         return local;

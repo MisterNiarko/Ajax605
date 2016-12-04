@@ -44,5 +44,39 @@ public class ListePariHttp {
 	public PariHttp getPari(int numPari){
 		return ListePari[numPari];
 	}
+	
+	public float getMiseMatch(int idMatch){
+		float miseTotale = 0;
+		for(PariHttp pari : ListePari){
+			if(pari.getMatchID() == idMatch){
+				miseTotale += pari.getMontantPari();
+			}
+		}
+		return miseTotale;
+	}
+	
+	public float getGainMatch(int idMatch){
+		float gainTotale = 0;
+		for(PariHttp pari : ListePari){
+			if(pari.getMatchID() == idMatch){
+				if(pari.getStatus() == 1){
+					gainTotale += pari.getMontantPari();
+				}
+			}
+		}
+		return gainTotale;
+	}
+	
+	public void majParis(Match match){
+		for(PariHttp pari : ListePari){
+			if(pari.getMatchID() == match.getId()){
+				if(match.getGagnant().equals(pari.getNomEquipe())){
+					pari.setStatus(1);
+				}else{
+					pari.setStatus(2);
+				}
+			}
+		}
+	}
 
 }
