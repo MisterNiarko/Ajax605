@@ -25,7 +25,7 @@ public class PariHttp {
     public void calculGain(){
 		float miseTotale = ListePariHttp.getInstance().getMiseMatch(matchID);
 		float gainTotal = ListePariHttp.getInstance().getGainMatch(matchID);
-		gain = (float)( (montantPari / gainTotal) * (miseTotale * 0.75) );
+		gain = (float)( montantPari + (montantPari / gainTotal) * (miseTotale * 0.75) );
 	}
     
     public void setPariID(int pariID) {
