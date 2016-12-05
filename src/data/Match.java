@@ -22,6 +22,7 @@ public class Match  implements Serializable  {
     private Equipe visiteur = null;
     private int scoreVisiteur = 0;
     private Equipe gagnant = null;
+    private boolean fin = false;
     
     private List<Evenement> evtMatch = new ArrayList<Evenement>();
     private int periode;
@@ -68,9 +69,9 @@ public class Match  implements Serializable  {
             case 3:
 		if ((temps >= TEMPS_MAX ) && pause == false ) {
                     pause = true;
+                    fin = true;
                     gestionGagnant();
                     evtMatch.add( new Evenement(temps, "Fin du match !"));
-                    ListePariHttp.getInstance().majParis(this);
 		}	
             break;
             default:
@@ -85,6 +86,7 @@ public class Match  implements Serializable  {
         else if( scoreLocal > scoreVisiteur) {
                 setGagnant(local);
         }
+        System.out.println("Le gagnant du match " + this.id + " est " + this.getGagnant());
     }
     
     public synchronized void butVisiteur(){
@@ -111,7 +113,7 @@ public class Match  implements Serializable  {
 	else
             return null;
     }
-    Equipe getEquipeGagnante(){
+    public Equipe getEquipeGagnante(){
 	return gagnant;
     }
     public int getTemps() {
@@ -155,6 +157,9 @@ public class Match  implements Serializable  {
     }
     public int getScoreVisiteur(){
     	return scoreVisiteur;
+    }
+    public boolean getFin(){
+    	return fin;
     }
     
     public String getStringTemps() {

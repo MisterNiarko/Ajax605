@@ -78,6 +78,6 @@ public class PariHttp {
      
      @Override
      public String toString() {
-         return "{\"Pari n°\":" + pariID + ",\"Equipe\":\"" + nomEquipe + ",\"Montant\":\"" + montantPari + "\" }";
+         return "Pari n° " + pariID + " Equipe : " + nomEquipe + " Montant : " + montantPari;
      }
 }

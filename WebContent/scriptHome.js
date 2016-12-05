@@ -129,11 +129,8 @@ function ajouterLigne(id, equipeA, equipeB, temps){
 		}
 		loadMatchDetail(id);
 		idMatchDetail=id;
-<<<<<<< Updated upstream
 		loadOptions(id)
-=======
-		parier();
->>>>>>> Stashed changes
+		getResultat()
 	});
 	ligne.onmouseover = (function(){
 		ligne.style.backgroundColor = "#CFD3F8";
@@ -160,7 +157,6 @@ function secondsToHms(d) {
 }
 
 function parier(){
-<<<<<<< Updated upstream
 	console.log(document.getElementById("valueBet").value);
 	$.post("GameBet", {matchID: idMatchDetail, nomEquipe: document.getElementById("choiceBet").value, montantPari: document.getElementById("valueBet").value}, function(confirmation){
 		if(confirmation == -1){
@@ -169,11 +165,9 @@ function parier(){
 		else{}
 	});
 }
-=======
-	$.post("GameBet", {matchID: "1", nomEquipe: "C", montantPari: "100"});
-}
 
 function getResultat(){
-	$.get("GameBet", {idPari: 1});
+	$.get("GameBet", {idPari: 1}, function(pari){
+		alert("Gain pour le pari n°" + pari.pariID + " = " + pari.gain);
+	});
 }
->>>>>>> Stashed changes

@@ -23,23 +23,57 @@ public class GameBet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = -1720406452110603666L;
 	
-	private ListePariHttp donnees = null;
+	private ListePariHttp listePari = null;
+	private ListeDesMatchs listeMatch = null;
+	
 
 	public GameBet() {
 		super();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		donnees = ListePariHttp.getInstance();
+		listePari = ListePariHttp.getInstance();
+		listeMatch = ListeDesMatchs.getInstance();
 		int idPari = Integer.parseInt(request.getParameter("idPari"));
-		PariHttp pari = donnees.getPari(idPari);
-		if(pari.getStatus() == 1){
-			pari.calculGain();
+		
+		try{
+			PariHttp pari = listePari.getPari(idPari);
+			PariHttp listeParis[] = listePari.getAllPari();
+			Match listeMatchs[] = listeMatch.getAllMatch();
+			Match match = listeMatchs[pari.getMatchID()];
+			
+			if(match.getEquipeGagnante() != null){
+				for(PariHttp ipari : listeParis){
+					if(ipari != null){
+						if(ipari.getMatchID() == match.getId()){
+							if(ipari.getNomEquipe().equals(match.getGagnant())){
+								ipari.setStatus(1);
+							}else{
+								ipari.setStatus(2);
+							}
+						}
+					}
+				}
+			
+				if(pari.getStatus() == 1){
+					pari.calculGain();
+				}
+			}else{
+				if (match.getFin() == true){
+					System.out.println("Exaeco..........");
+				}else{
+					System.out.println("Pas d'equipe gagnante pour le moment..........");
+				}
+			}
+			
+			System.out.println("Voici les gains de mon pari : " + pari.getGain());
+			response.setContentType("application/json"); 
+			response.setCharacterEncoding("UTF-8");
+	        response.getWriter().write(new Gson().toJson(pari));
 		}
-		System.out.println("Voici les gains de mon pari : " + pari.getGain()); //Pour essai
-		response.setContentType("application/json"); 
-		response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(new Gson().toJson(pari));
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -52,6 +86,6 @@ public class GameBet extends HttpServlet {
         }
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(nbrPari);
+        response.getWriter().write(new Gson().toJson(nbrPari));
     }
 }
