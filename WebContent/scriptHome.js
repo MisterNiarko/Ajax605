@@ -6,6 +6,15 @@ var j = 0;
 function onStart(){
 	loadMatchList();
 	startEventNotifier();
+	$.get('GameList', function(listeMatch){
+		$.each(listeMatch, function(index,value){
+			$.each(value, function(index2,value2){
+				if(value2.temps == 5400){
+					checkCookie(value2);
+				}
+			});
+		});
+	});
 	setInterval("loadMatch()",2000);
 	}
 
@@ -47,6 +56,17 @@ function startEventNotifier(){
 	eventSource.onError = function(){
 		console.log("SSE Error");
 	};
+}
+
+function checkCookie(match){
+	i = 0;
+	while(readCookie("Pari"+i) != null){
+		if(readCookie("Pari"+i) == match.id){
+			getResultat(i);
+			eraseCookie("Pari"+i)
+		}
+		i += 1;
+	}
 }
 
 function loadMatch(){
@@ -95,6 +115,18 @@ function loadMatchDetail(id){
 	    colonne1.innerHTML = "";
 	    colonne2 = ligne.insertCell(1);
 	    colonne2.innerHTML = "Periode " + matchDetail.periode;
+	    
+	    ligne = tableau.insertRow(-1);
+	    colonne1 = ligne.insertCell(0);
+	    colonne1.innerHTML = "Penalite equipe " + matchDetail.local.nom + ":";
+	    colonne2 = ligne.insertCell(1);
+	    colonne2.innerHTML = matchDetail.local.penalite;
+	    
+	    ligne = tableau.insertRow(-1);
+	    colonne1 = ligne.insertCell(0);
+	    colonne1.innerHTML = "Penalite equipe " + matchDetail.visiteur.nom + ":";
+	    colonne2 = ligne.insertCell(1);
+	    colonne2.innerHTML = matchDetail.visiteur.penalite;
 	});
 	
 }
@@ -173,7 +205,8 @@ function parier(){
 			alert("Il est trop tard pour parier sur ce match.");
 		}
 		else{
-			createCookie("Pari"+confirmation,idMatchDetail,1)
+			createCookie("Pari"+confirmation,idMatchDetail,1);
+			alert("Pari pris en compte !");
 		}
 	});
 }
