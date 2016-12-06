@@ -16,17 +16,17 @@ Ev�nements :
 Paris
 
 Fonctionnalit�s :
-[] Choisir un match pour faire un pari
-[] Faire un pari sur un match
-[] Informer les parieurs de leur gain imm�diatement s'ils sont connect�s � la fin du match
-[] Informer les parieurs de leur gain lorsqu'ils se reconnectent, s'ils n'ont pas d�j� re�u cette notification (utiliser les cookies par exemple pour le savoir ou garder l'�tat sur le serveur)
+[x] Choisir un match pour faire un pari
+[x] Faire un pari sur un match
+[x] Informer les parieurs de leur gain imm�diatement s'ils sont connect�s � la fin du match
+[x] Informer les parieurs de leur gain lorsqu'ils se reconnectent, s'ils n'ont pas d�j� re�u cette notification (utiliser les cookies par exemple pour le savoir ou garder l'�tat sur le serveur)
 
 Impl�mentation
 Ajax et dynamicit� de la page ou des pages
 [x] S�rialisation et envoi des requ�tes
 [x] Utilisation du DOM pour modifier la page(ne pas recharger la page en entier, mais en partie)
 [x] Utilisation de HttpXMLRequest ou l'�quivalent selon le framework utilis� pour les mises-�-jour 
-[] Indication dans la page que la mise � jour est en cours(utilisation des �tats de la requ�tes Ajax)
+[x] Indication dans la page que la mise � jour est en cours(utilisation des �tats de la requ�tes Ajax)
 [x] R�ception, d�s�rialisation et utilisation des r�ponses
 
 SERVEUR

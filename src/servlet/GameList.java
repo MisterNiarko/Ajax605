@@ -33,6 +33,12 @@ public class GameList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		donnees = ListeDesMatchs.getInstance();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		MatchsEnCours listeMatch = donnees.getAllMatchName();
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");

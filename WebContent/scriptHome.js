@@ -25,7 +25,6 @@ function startEventNotifier(){
 		console.log("SSE connecté !\n");
 	};
 	eventSource.onmessage = function(evt){
-		//alert(evt.data);
 		console.log(evt.data);
 		var obj = JSON.parse(evt.data);
 		console.log(obj.message.message);
@@ -76,7 +75,9 @@ function loadMatch(){
 
 function loadMatchList(){
 	clearTable("tableMatch");
+	$(loadingGif).show();
 	$.get('GameList', function(listeMatch){
+		$(loadingGif).hide();
 		ds_ListeDesMatchs = listeMatch;
 		$.each(listeMatch, function(index,value){
 			$.each(value, function(index2,value2){
@@ -89,7 +90,6 @@ function loadMatchList(){
 function loadMatchDetail(id){
 	clearTable("tableMatchDetail");
 	var tableau = document.getElementById("tableMatchDetail");
-	
 	$.get('GameDetail', {id: id}, function(matchDetail){
 		
 		var ligne = tableau.insertRow(-1);

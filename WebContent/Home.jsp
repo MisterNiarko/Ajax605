@@ -16,6 +16,7 @@
     	<div class="left">
 			<h1>LISTE DES MATCHS EN COURS</h1>
 			<table id="tableMatch" class="tableMatch" ></table>
+			<img src="Loading_icon.gif" id="loadingGif" hidden>
 			<button id="btRefresh" type="button" onclick="loadMatchList()">Refresh</button>
 		</div>
 		<div class="right">
