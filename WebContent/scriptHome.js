@@ -171,8 +171,7 @@ function ajouterLigne(id, equipeA, equipeB, temps){
 		}
 		loadMatchDetail(id);
 		idMatchDetail=id;
-		loadOptions(id)
-		getResultat()
+		loadOptions(id);
 	});
 	ligne.onmouseover = (function(){
 		ligne.style.backgroundColor = "#CFD3F8";
